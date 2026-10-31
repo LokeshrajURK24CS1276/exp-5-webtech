@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LensArt - Studio Tools</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-text">
+      <h1>LensArt</h1>
+      <p class="tagline">Professional Photo Editing Studio</p>
+      <p class="sub">
+        Studio Tools for our clients and editors.<br>
+        Caption checks, price conversion, gallery planning and quick order estimates &ndash;
+        all in one place.
+      </p>
+      <a href="#caption" class="cta-btn">Try the Tools</a>
+      <a href="#order" class="cta-outline">Place an Order</a>
+    </div>
+    <div class="header-img"><img src="lensart.jpg" alt="LensArt before and after portrait edit"></div>
+  </div>
+</div>
+
+<div class="nav">
+  <a href="#caption">Caption</a>
+  <a href="#bmi">BMI</a>
+  <a href="#gallery">Gallery Wall</a>
+  <a href="#converter">Converter</a>
+  <a href="#flipper">Before / After</a>
+  <a href="#order">Order</a>
+</div>
+
+<div class="container">
+
+  <!-- 1. Shortest and longest word -->
+  <div class="section" id="caption">
+    <h2 class="section-title">Caption Word Finder</h2>
+    <p class="section-sub">Find the shortest and longest word in a photo caption</p>
+    <div class="row">
+      <div class="panel">
+        <h3>Enter Caption</h3>
+        <div class="field">
+          <label for="text">Caption</label>
+          <input type="text" id="text" value="Web Development Tutorial">
+        </div>
+        <button class="btn" onclick="findWords();">Find Words</button>
+      </div>
+      <div class="panel">
+        <h3>Result</h3>
+        <p class="result-line">Shortest: <span id="shortest" class="result"></span></p>
+        <p class="result-line">Longest: <span id="longest" class="result"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. BMI calculator -->
+  <div class="section" id="bmi">
+    <h2 class="section-title">Calculate your Body Mass Index (BMI)!</h2>
+    <p class="section-sub">A quick check before your model portfolio shoot</p>
+    <div class="row">
+      <div class="panel">
+        <h3>Your Details</h3>
+        <div class="field">
+          <label for="weight">Weight (in kilograms)</label>
+          <input type="text" id="weight">
+        </div>
+        <div class="field">
+          <label for="height">Height (in meters)</label>
+          <input type="text" id="height">
+        </div>
+        <button class="btn" onclick="calculate();">Get BMI!</button>
+        <div class="output">
+          <p>Your BMI is <span id="score" class="result"></span>.</p>
+          <p>Your body type is <span id="type" class="result"></span>.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>BMI Chart</h3>
+        <table class="price-table">
+          <tr><th>Body Type</th><th>BMI Range</th></tr>
+          <tr id="row-Underweight"><td>Underweight</td><td>Below 18</td></tr>
+          <tr id="row-Normal"><td>Normal</td><td>18 &ndash; 25</td></tr>
+          <tr id="row-Overweight"><td>Overweight</td><td>25 &ndash; 30</td></tr>
+          <tr id="row-Obese"><td>Obese</td><td>Above 30</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Gallery wall (fruit farm) -->
+  <div class="section" id="gallery">
+    <h2 class="section-title">Gallery Wall Planner</h2>
+    <p class="section-sub">Each frame randomly shows the before or the after photo</p>
+    <div class="panel">
+      <div class="controls-row">
+        <div class="field">
+          <label for="rows">Rows</label>
+          <input type="text" id="rows">
+        </div>
+        <div class="field">
+          <label for="columns">Columns</label>
+          <input type="text" id="columns">
+        </div>
+        <button class="btn" onclick="grow();">Plant Gallery</button>
+      </div>
+      <div id="garden"><p class="empty">Enter rows and columns to plan the wall.</p></div>
+    </div>
+  </div>
+
+  <!-- 4. Currency converter -->
+  <div class="section" id="converter">
+    <h2 class="section-title">Price Converter</h2>
+    <p class="section-sub">Convert our editing prices between rupees and dollars</p>
+    <div class="row">
+      <div class="panel">
+        <h3>Convert</h3>
+        <div class="field">
+          <label for="data">Amount</label>
+          <input type="text" id="data">
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="from">From</label>
+            <select id="from">
+              <option value="INR">Indian Rupee</option>
+              <option value="USD">US Dollar</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="to">To</label>
+            <select id="to">
+              <option value="USD">US Dollar</option>
+              <option value="INR">Indian Rupee</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" onclick="convert();">Calculate</button>
+        <div class="output">
+          <p>Converted amount: <span id="answer" class="result"></span></p>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Conversion Rates</h3>
+        <div class="row">
+          <div class="stat">1 Rupee<span>$0.015</span></div>
+          <div class="stat">1 Dollar<span>Rs.67.12</span></div>
+        </div>
+        <p>Color Grading at Rs.299 is about $4.49 for our overseas clients.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Coin flip -->
+  <div class="section" id="flipper">
+    <h2 class="section-title">Before or After?</h2>
+    <p class="section-sub">Flip to randomly show the before (heads) or the after (tails) photo</p>
+    <div class="row">
+      <div class="panel flip-panel">
+        <img src="before.jpg" id="coin" alt="Before and after photo"><br>
+        <button class="btn" id="flip">Flip!</button>
+      </div>
+      <div class="panel">
+        <h3>Flip Count</h3>
+        <div class="row">
+          <div class="stat">Before (Heads) Total<span id="num_heads">0</span></div>
+          <div class="stat">After (Tails) Total<span id="num_tails">0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Order form -->
+  <div class="section" id="order">
+    <h2 class="section-title">Photo Edit Order Form</h2>
+    <p class="section-sub">Pick the number of edits, add 9% tax and a tip for our editors</p>
+    <div class="row">
+      <div class="panel">
+        <h3>Your Order</h3>
+        <div class="field">
+          <label for="small"># of Basic Edits</label>
+          <input type="text" id="small">
+        </div>
+        <div class="field">
+          <label for="medium"># of Standard Edits</label>
+          <input type="text" id="medium">
+        </div>
+        <div class="field">
+          <label for="large"># of Premium Edits</label>
+          <input type="text" id="large">
+        </div>
+        <div class="field">
+          <label>Tip</label>
+          <div class="tips">
+            <label class="tip"><input type="radio" value="10" name="tip"> 10%</label>
+            <label class="tip"><input type="radio" value="15" name="tip" checked="checked"> 15%</label>
+            <label class="tip"><input type="radio" value="20" name="tip"> 20%</label>
+          </div>
+        </div>
+        <button class="btn" id="submit">Calculate Order</button>
+      </div>
+      <div class="panel">
+        <h3>Price List</h3>
+        <table class="price-table">
+          <tr><th>Edit Type</th><th>Includes</th><th>Price</th></tr>
+          <tr><td>Basic</td><td>Exposure, crop, colour fix</td><td>Rs.100</td></tr>
+          <tr><td>Standard</td><td>Basic + skin retouch</td><td>Rs.200</td></tr>
+          <tr><td>Premium</td><td>Full retouch + background</td><td>Rs.400</td></tr>
+        </table>
+        <div class="output">
+          <p class="total-line">Cost of order: <span id="price" class="result"></span></p>
+          <p id="details" class="details"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>&copy; 2026 LensArt Photo Editing Studio &mdash; All Rights Reserved</p>
+  <p>Coimbatore, Tamil Nadu &bull; Lokeshraj M &bull; URK24CS1276</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
